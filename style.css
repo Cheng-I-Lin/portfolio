@@ -36,4 +36,17 @@ nav a:hover{
 .current {
     border-bottom: 0.4em solid oklch(80% 3% 200);
     padding-bottom: 0.1em;
+    font-weight: bold
+}
+
+form label {
+    display: block;
+    margin-block: 1.25em;
+}
+
+form input,textarea,button {
+    display: block;
+    font: inherit;
+    width: 100%;
+    box-sizing: border-box;
 }
