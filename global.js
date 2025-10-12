@@ -61,9 +61,19 @@ document.body.insertAdjacentHTML(
       </label>`,
 );
 
+function setColorScheme(colorScheme){
+    document.documentElement.style.setProperty('color-scheme', colorScheme);
+}
+
 let select=document.querySelector('select');
 
 select.addEventListener('input', function (event) {
-    document.documentElement.style.setProperty('color-scheme', event.target.value);
-    console.log('color scheme changed to', event.target.value);
+    localStorage.colorScheme = event.target.value;
+    setColorScheme(event.target.value);
+    //console.log('color scheme changed to', event.target.value);
 });
+
+if ("colorScheme" in localStorage){
+    setColorScheme(localStorage.colorScheme);
+    select.value=localStorage.colorScheme;
+}
