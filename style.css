@@ -1,6 +1,6 @@
 :root {
     --color-accent:oklch(0.74 0.14 174);
-    color-scheme: dark;
+    color-scheme: light dark;
 }
 
 body {
@@ -62,7 +62,7 @@ form {
 }
 
 
-form input,textarea,button {
+form input,textarea,button,select {
     font: inherit;
 }
 
@@ -127,3 +127,11 @@ h1, h2, h3, h4, h5, h6 {
 p {
     text-wrap: balance;
 }
+
+.color-scheme {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 80%;
+}
+

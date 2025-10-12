@@ -46,3 +46,24 @@ for (let p of pages) {
         a.target = "_blank";
     }
 }
+
+document.body.insertAdjacentHTML(
+    'afterbegin',
+    `
+      <label class="color-scheme">
+          Theme:
+          <select>
+              <!-- TODO add <option> elements here -->
+            <option value="light dark">Automatic</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+      </label>`,
+);
+
+let select=document.querySelector('select');
+
+select.addEventListener('input', function (event) {
+    document.documentElement.style.setProperty('color-scheme', event.target.value);
+    console.log('color scheme changed to', event.target.value);
+});
