@@ -77,3 +77,18 @@ if ("colorScheme" in localStorage){
     setColorScheme(localStorage.colorScheme);
     select.value=localStorage.colorScheme;
 }
+
+let form=document.querySelector('form');
+
+form?.addEventListener('submit', function (event) {
+    event.preventDefault();
+    let data = new FormData(form);
+    let arr=[];
+    for (let [name, value] of data) {
+        // TODO build URL parameters here
+        arr.push(`${name}=${encodeURIComponent(value)}`);
+        console.log(name, encodeURIComponent(value));
+    }
+    let url=`${form.action}?${arr.join('&')}`;
+    location.href = url;
+});
