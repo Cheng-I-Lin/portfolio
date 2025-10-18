@@ -135,3 +135,15 @@ p {
     font-size: 80%;
 }
 
+#profile-stats {
+    dl {
+        display: grid;
+        grid-template-columns: repeat(auto-4, 1fr);
+    }
+    dt {
+        grid-row: 1;
+    }
+    dd {
+        grid-row: 2;
+    }
+}
