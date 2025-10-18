@@ -110,6 +110,10 @@ export async function fetchJSON(url) {
 
   export function renderProjects(project, containerElement, headingLevel = 'h2') {
     // Your code will go here
+    const projectTitle = document.querySelector('.projects-title');
+    if(projectTitle){
+        projectTitle.innerHTML=`${project.length} Projects`;
+    }
     containerElement.innerHTML = '';
     project.forEach(p => {
         const article = document.createElement('article');
@@ -120,4 +124,8 @@ export async function fetchJSON(url) {
         `;
         containerElement.appendChild(article);
     });
+  }
+
+  export async function fetchGitHubData(username) {
+    // return statement here
   }
