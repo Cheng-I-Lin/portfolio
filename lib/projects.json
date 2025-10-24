@@ -1,62 +1,74 @@
 [
     {
-        "title": "Lorem ipsum dolor sit.",
+        "title": "DSC 106: Lab 1",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates eveniet quibusdam, tenetur architecto harum pariatur ab praesentium cupiditate dicta odit rem, explicabo ex autem velit necessitatibus, magnam ducimus saepe. Ipsum."
+        "description": "Created a simple web page using soley HTML and uploaded it through GitHub Pages."
     },
     {
-        "title": "Sed, fugiat nemo? Ratione?",
+        "title": "DSC 106: Lab 2",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Vel, tenetur culpa eveniet consectetur sit debitis architecto repellat quos vitae ex blanditiis cum voluptatibus qui nisi quis voluptates, perspiciatis nesciunt dolores iusto veniam modi a repellendus? Quisquam, ipsam. Soluta?"
+        "description": "Styled the web page with the addition of CSS, providing vibrant colors, toggle effects, and better layouts."
     },
     {
-        "title": "Minima quam consequuntur nulla.",
+        "title": "DSC 106: Lab 3",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Laudantium, cumque cupiditate architecto nam vero exercitationem natus dicta tenetur veniam error culpa repellendus deserunt dolor repellat, quasi a doloribus dolores voluptatibus, libero accusamus! Aliquid amet nulla sequi esse quia."
+        "description": "Implemented web page elements through JavaScript automations and developed better visual effects such as the dark and light modes."
     },
     {
-        "title": "Itaque enim non pariatur.",
+        "title": "DSC 106: Lab 4",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Cum numquam velit aperiam sequi exercitationem, veniam voluptatibus perferendis excepturi, dolor tempore sed! Exercitationem, facilis? Porro architecto, excepturi pariatur suscipit soluta deleniti voluptatibus itaque assumenda eveniet, repellendus est sint temporibus!"
+        "description": "Utilized JavaScript to fully realize the projects page while adding three recent projects and GitHub statistics into the home page."
     },
     {
-        "title": "Neque nihil obcaecati praesentium?",
+        "title": "DSC 106: Project 1",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Ullam nisi, ducimus enim quod, fuga pariatur quam repellendus iste necessitatibus cum quidem accusantium? Porro expedita nam, voluptatem blanditiis vero inventore, quam, laudantium optio sapiente aliquam ut officia fugit asperiores."
+        "description": "Analyzed the food processing dataset and drew conclusions on how certain baby food brands produces healthier, cheaper products by visualizing the trends on a bar line graph."
     },
     {
-        "title": "Iure ratione nisi quasi.",
+        "title": "DSC 106: Project 2",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Corporis omnis quia sit ducimus quaerat nihil eligendi voluptatibus possimus inventore nesciunt laudantium non dolor, exercitationem fugiat accusantium voluptas quam! Nihil labore facilis perspiciatis rerum! Rerum voluptatum distinctio dolore illum."
+        "description": "Analyzed the climate change and emissions dataset to argue a proposition with two visualizations, in which one argues for the proposition and the other against."
     },
     {
-        "title": "Magnam vel aut libero!",
+        "title": "League of Legends Analysis",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Doloremque libero aut nemo sapiente veritatis harum recusandae a natus exercitationem quod dolor deserunt adipisci fuga unde, molestiae consectetur expedita, quam eius temporibus laborum commodi dolore eligendi blanditiis pariatur. Beatae!"
+        "description": "Analyzed the League of Legeneds gameplay statistics."
     },
     {
-        "title": "Rerum voluptatem perferendis ipsa.",
+        "title": "Network Simulation Research",
+        "year": "2023",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Corporis molestiae provident doloremque dignissimos, suscipit dolore nobis dolorum. Alias culpa vel saepe rem praesentium ipsum minus harum quo officiis! Sequi hic ex minus illo cum, culpa unde error quaerat."
+        "description": "Researched on how misinformation spread within a network of communicating individuals."
     },
     {
-        "title": "Voluptas, veritatis. Consequuntur, rem.",
+        "title": "Game: Finding Bomb",
+        "year": "2021",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Officia dolorum exercitationem quas accusamus vero nemo. Voluptatibus harum doloribus nemo totam reprehenderit ad non soluta illo, iste saepe tempore recusandae quisquam dolorum odio, molestias minima? Totam voluptates minus modi!"
+        "description": "Developed a simple game where the user has to avoid the bomb hidden in a certain sized grid."
     },
     {
-        "title": "In velit accusantium nesciunt.",
+        "title": "Game: Keyboard Madness",
+        "year": "2022",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Voluptatibus molestias, omnis saepe aperiam animi beatae. Tempore cupiditate dolores, nam soluta rerum tempora doloribus beatae quam qui neque nesciunt temporibus, corrupti quos blanditiis vitae dolorem commodi sed eos. Nihil."
+        "description": "Developed a simple game where the user has to press keys to survive."
     },
     {
-        "title": "Sapiente nisi repellat hic.",
+        "title": "Game: OutWorld",
+        "year": "2022",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Voluptatem voluptas amet maxime itaque esse. Nisi incidunt cumque doloribus ut. Beatae veniam nesciunt explicabo ex amet iste et fuga aliquam, dolorum autem facere aperiam animi, repellendus, quasi nobis atque."
+        "description": "An attempt to use Unity to create a 2D game."
     },
     {
-        "title": "Eum iure quod sint.",
+        "title": "Calculator",
+        "year": "2022",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Molestiae cum, officiis ipsa suscipit harum quis eveniet commodi accusantium, fuga consequatur mollitia ipsam unde pariatur sint quam optio vitae sapiente, distinctio nulla? Eos odit quo officiis tempora quibusdam consequatur?"
+        "description": "A simple calculator."
     }
 ]
