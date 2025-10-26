@@ -120,7 +120,10 @@ export async function fetchJSON(url) {
         article.innerHTML = `
             <${headingLevel}>${p.title}</${headingLevel}>
             <img src="${p.image}" alt="${p.title}">
-            <p>${p.description}</p>
+            <div>
+                <p>${p.description}</p>
+                <p class="year">c. ${p.year}</p>
+            </div>
         `;
         containerElement.appendChild(article);
     });

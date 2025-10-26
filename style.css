@@ -154,3 +154,16 @@ p {
         font-size: 2em;
     }
 }
+
+.year {
+    font-family: Baskerville;
+    font-variant-numeric: oldstyle-nums;
+    font-size: 1.25em;
+}
+
+#projects-plot {
+    max-width: 20em;
+    margin-block: 2em;
+  
+    overflow: visible;
+}
