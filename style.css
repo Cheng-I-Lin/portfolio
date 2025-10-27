@@ -1,5 +1,6 @@
 :root {
     --color-accent:oklch(0.74 0.14 174);
+    --border-color: oklch(50% 10% 200 / 40%);
     color-scheme: light dark;
 }
 
@@ -15,7 +16,6 @@ body {
   }
 
 nav {
-    --border-color: oklch(50% 10% 200 / 40%);
     display: flex;
     margin-bottom: 2em;
     border-bottom: 1px solid var(--border-color);
@@ -166,4 +166,36 @@ p {
     margin-block: 2em;
   
     overflow: visible;
+}
+
+.legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+    border: 0.1em solid var(--border-color); 
+    padding: 1em;
+    flex: 1;
+    gap: 1em;
+}
+
+.swatch {
+    width: 2em;
+    height: 2em;
+    background-color: var(--color);
+    border-radius: 50%;
+}
+
+.legend-items {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.legend-value {
+    color: gray;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 2em;
 }
