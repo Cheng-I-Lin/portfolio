@@ -1,74 +1,74 @@
 [
-    {
-        "title": "DSC 106: Lab 1",
-        "year": "2025",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Created a simple web page using soley HTML and uploaded it through GitHub Pages."
-    },
-    {
-        "title": "DSC 106: Lab 2",
-        "year": "2025",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Styled the web page with the addition of CSS, providing vibrant colors, toggle effects, and better layouts."
-    },
-    {
-        "title": "DSC 106: Lab 3",
-        "year": "2025",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Implemented web page elements through JavaScript automations and developed better visual effects such as the dark and light modes."
-    },
-    {
-        "title": "DSC 106: Lab 4",
-        "year": "2025",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Utilized JavaScript to fully realize the projects page while adding three recent projects and GitHub statistics into the home page."
-    },
-    {
-        "title": "DSC 106: Project 1",
-        "year": "2025",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Analyzed the food processing dataset and drew conclusions on how certain baby food brands produces healthier, cheaper products by visualizing the trends on a bar line graph."
-    },
-    {
-        "title": "DSC 106: Project 2",
-        "year": "2025",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Analyzed the climate change and emissions dataset to argue a proposition with two visualizations, in which one argues for the proposition and the other against."
-    },
-    {
-        "title": "League of Legends Analysis",
-        "year": "2024",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Analyzed the League of Legeneds gameplay statistics."
-    },
-    {
-        "title": "Network Simulation Research",
-        "year": "2023",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Researched on how misinformation spread within a network of communicating individuals."
-    },
-    {
-        "title": "Game: Finding Bomb",
-        "year": "2021",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Developed a simple game where the user has to avoid the bomb hidden in a certain sized grid."
-    },
-    {
-        "title": "Game: Keyboard Madness",
-        "year": "2022",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Developed a simple game where the user has to press keys to survive."
-    },
-    {
-        "title": "Game: OutWorld",
-        "year": "2022",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "An attempt to use Unity to create a 2D game."
-    },
-    {
-        "title": "Calculator",
-        "year": "2022",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "A simple calculator."
-    }
+  {
+    "title": "DSC 106: Lab 1",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Created a simple web page using soley HTML and uploaded it through GitHub Pages."
+  },
+  {
+    "title": "DSC 106: Lab 2",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Styled the web page with the addition of CSS, providing vibrant colors, toggle effects, and better layouts."
+  },
+  {
+    "title": "DSC 106: Lab 3",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Implemented web page elements through JavaScript automations and developed better visual effects such as the dark and light modes."
+  },
+  {
+    "title": "DSC 106: Lab 4",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Utilized JavaScript to fully realize the projects page while adding three recent projects and GitHub statistics into the home page."
+  },
+  {
+    "title": "DSC 106: Project 1",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Analyzed the food processing dataset and drew conclusions on how certain baby food brands produces healthier, cheaper products by visualizing the trends on a bar line graph."
+  },
+  {
+    "title": "DSC 106: Project 2",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Analyzed the climate change and emissions dataset to argue a proposition with two visualizations, in which one argues for the proposition and the other against."
+  },
+  {
+    "title": "League of Legends Analysis",
+    "year": "2024",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Analyzed the League of Legeneds gameplay statistics."
+  },
+  {
+    "title": "Network Simulation Research",
+    "year": "2023",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Researched on how misinformation spread within a network of communicating individuals."
+  },
+  {
+    "title": "Game: Finding Bomb",
+    "year": "2021",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Developed a simple game where the user has to avoid the bomb hidden in a certain sized grid."
+  },
+  {
+    "title": "Game: Keyboard Madness",
+    "year": "2022",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Developed a simple game where the user has to press keys to survive."
+  },
+  {
+    "title": "Game: OutWorld",
+    "year": "2022",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "An attempt to use Unity to create a 2D game."
+  },
+  {
+    "title": "Calculator",
+    "year": "2022",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "A simple calculator."
+  }
 ]

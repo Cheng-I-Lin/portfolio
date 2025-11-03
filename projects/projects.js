@@ -1,19 +1,19 @@
-import { fetchJSON, renderProjects } from '../global.js';
-import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
-const projects = await fetchJSON('../lib/projects.json');
+import { fetchJSON, renderProjects } from "../global.js";
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
+const projects = await fetchJSON("../lib/projects.json");
 
-const projectsContainer = document.querySelector('.projects');
-renderProjects(projects, projectsContainer, 'h2');
+const projectsContainer = document.querySelector(".projects");
+renderProjects(projects, projectsContainer, "h2");
 
 let rolledData = d3.rollups(
   projects,
   (v) => v.length,
-  (d) => d.year,
+  (d) => d.year
 );
 
 let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 let data = rolledData.map(([year, count]) => {
-    return { value: count, label: year };
+  return { value: count, label: year };
 });
 
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
@@ -22,169 +22,160 @@ let arcData = sliceGenerator(data);
 let arcs = arcData.map((d) => arcGenerator(d));
 
 arcs.forEach((arc, idx) => {
-    d3.select('svg')
-      .append('path')
-      .attr('d', arc)
-      .attr('fill', colors(idx)) // Fill in the attribute for fill color via indexing the colors variable
-})
-
-let legend = d3.select('.legend');
-data.forEach((d, idx) => {
-  legend
-    .append('li')
-    .attr('style', `--color:${colors(idx)}`) // set the style attribute while passing in parameters
-    .attr('class', 'legend-items')
-    .html(`<span class="swatch"></span> ${d.label} <em class="legend-value">(${d.value})</em>`); // set the inner html of <li>
+  d3.select("svg").append("path").attr("d", arc).attr("fill", colors(idx)); // Fill in the attribute for fill color via indexing the colors variable
 });
 
-let searchInput = document.querySelector('.searchBar');
-let currentQuery = '';
+let legend = d3.select(".legend");
+data.forEach((d, idx) => {
+  legend
+    .append("li")
+    .attr("style", `--color:${colors(idx)}`) // set the style attribute while passing in parameters
+    .attr("class", "legend-items")
+    .html(
+      `<span class="swatch"></span> ${d.label} <em class="legend-value">(${d.value})</em>`
+    ); // set the inner html of <li>
+});
+
+let searchInput = document.querySelector(".searchBar");
+let currentQuery = "";
 let selectedIndex = -1;
 
-function filterProjects(d=data) {
-    let filtered = projects;
-    
-    if (currentQuery !== '') {
-      filtered = filtered.filter(project => {
-        let values = Object.values(project).join('\n').toLowerCase();
-        return values.includes(currentQuery.toLowerCase());
-      });
-    }
-    
-    if (selectedIndex !== -1) {
-      const selectedYear = d[selectedIndex].label;
-      filtered = filtered.filter(project => project.year === selectedYear);
-    }
-    return filtered;
+function filterProjects(d = data) {
+  let filtered = projects;
+
+  if (currentQuery !== "") {
+    filtered = filtered.filter((project) => {
+      let values = Object.values(project).join("\n").toLowerCase();
+      return values.includes(currentQuery.toLowerCase());
+    });
+  }
+
+  if (selectedIndex !== -1) {
+    const selectedYear = d[selectedIndex].label;
+    filtered = filtered.filter((project) => project.year === selectedYear);
+  }
+  return filtered;
 }
 
 function setQuery(query) {
-    // filter projects
-    let filteredProjects = projects.filter((project) => {
-      let values = Object.values(project).join('\n').toLowerCase();
-      return values.includes(query.toLowerCase());
-    });
-    return filteredProjects;
-};
+  // filter projects
+  let filteredProjects = projects.filter((project) => {
+    let values = Object.values(project).join("\n").toLowerCase();
+    return values.includes(query.toLowerCase());
+  });
+  return filteredProjects;
+}
 
 // Refactor all plotting into one function
 function renderPieChart(projectsGiven) {
-    // re-calculate rolled data
-    let newRolledData = d3.rollups(
-      projectsGiven,
-      (v) => v.length,
-      (d) => d.year,
-    );
-    // re-calculate data
-    let newData = newRolledData.map(([year, count]) => {
-      return { value: count, label: year }; // TODO
-    });
-    // re-calculate slice generator, arc data, arc, etc.
-    let newSliceGenerator = d3.pie().value((d) => d.value);
-    let newArcData = newSliceGenerator(newData);
-    let newArcs = newArcData.map((d) => arcGenerator(d));
-    // TODO: clear up paths and legends
-    let newSVG = d3.select('svg');
-    newSVG.selectAll('path').remove();
-    let newLegend = d3.select('.legend');
-    newLegend.selectAll('li').remove();
-    // update paths and legends, refer to steps 1.4 and 2.2
-    newArcs.forEach((arc, idx) => {
-        d3.select('svg')
-          .append('path')
-          .attr('d', arc)
-          .attr('fill', colors(idx)) 
-          .attr('class', (_, idx) => (
-            // TODO: filter idx to find correct pie slice and apply CSS from above
-            selectedIndex === -1 ?  null : 'selected'
-          ))
-          .on('click', () => {
-            // What should we do? (Keep scrolling to find out!)
-              if (selectedIndex !== -1){
-                selectedIndex = -1;
-                let filteredProjects = filterProjects();
-                renderPieChart(filteredProjects);
-              } else{
-                selectedIndex = selectedIndex === idx ? -1 : idx;
-              }
-              svg
-                  .selectAll('path')
-                  .attr('class', (_, i) => (
-                  // TODO: filter idx to find correct pie slice and apply CSS from above
-                  i === selectedIndex ? 'selected' : null
-              ));
-              legend
-                  .selectAll('li')
-                  .attr('class', (_, i) => (
-                    // TODO: filter idx to find correct legend and apply CSS from above
-                    i === selectedIndex ? 'legend-items selected' : 'legend-items'
-              ));
-              if (selectedIndex === -1) {
-                  let filteredProjects = filterProjects();
-                  renderProjects(filteredProjects, projectsContainer, 'h2');
-              } else {
-                  // TODO: filter projects and project them onto webpage
-                  // Hint: `.label` might be useful
-                  //let selectedYear = data[selectedIndex].label;
-                  //let filteredProjects = projects.filter(project => project.year === selectedYear);
-                  let filteredProjects = filterProjects(newData);
-                  renderProjects(filteredProjects, projectsContainer, 'h2');
-              }
-          });
-    })
-    newData.forEach((d, idx) => {
-        legend
-          .append('li')
-          .attr('style', `--color:${colors(idx)}`) 
-          .attr('class', 'legend-items')
-          .html(`<span class="swatch"></span> ${d.label} <em class="legend-value">(${d.value})</em>`); 
-    });
+  // re-calculate rolled data
+  let newRolledData = d3.rollups(
+    projectsGiven,
+    (v) => v.length,
+    (d) => d.year
+  );
+  // re-calculate data
+  let newData = newRolledData.map(([year, count]) => {
+    return { value: count, label: year }; // TODO
+  });
+  // re-calculate slice generator, arc data, arc, etc.
+  let newSliceGenerator = d3.pie().value((d) => d.value);
+  let newArcData = newSliceGenerator(newData);
+  let newArcs = newArcData.map((d) => arcGenerator(d));
+  // TODO: clear up paths and legends
+  let newSVG = d3.select("svg");
+  newSVG.selectAll("path").remove();
+  let newLegend = d3.select(".legend");
+  newLegend.selectAll("li").remove();
+  // update paths and legends, refer to steps 1.4 and 2.2
+  newArcs.forEach((arc, idx) => {
+    d3.select("svg")
+      .append("path")
+      .attr("d", arc)
+      .attr("fill", colors(idx))
+      .attr("class", (_, idx) =>
+        // TODO: filter idx to find correct pie slice and apply CSS from above
+        selectedIndex === -1 ? null : "selected"
+      )
+      .on("click", () => {
+        // What should we do? (Keep scrolling to find out!)
+        if (selectedIndex !== -1) {
+          selectedIndex = -1;
+          let filteredProjects = filterProjects();
+          renderPieChart(filteredProjects);
+        } else {
+          selectedIndex = selectedIndex === idx ? -1 : idx;
+        }
+        svg.selectAll("path").attr("class", (_, i) =>
+          // TODO: filter idx to find correct pie slice and apply CSS from above
+          i === selectedIndex ? "selected" : null
+        );
+        legend.selectAll("li").attr("class", (_, i) =>
+          // TODO: filter idx to find correct legend and apply CSS from above
+          i === selectedIndex ? "legend-items selected" : "legend-items"
+        );
+        if (selectedIndex === -1) {
+          let filteredProjects = filterProjects();
+          renderProjects(filteredProjects, projectsContainer, "h2");
+        } else {
+          // TODO: filter projects and project them onto webpage
+          // Hint: `.label` might be useful
+          //let selectedYear = data[selectedIndex].label;
+          //let filteredProjects = projects.filter(project => project.year === selectedYear);
+          let filteredProjects = filterProjects(newData);
+          renderProjects(filteredProjects, projectsContainer, "h2");
+        }
+      });
+  });
+  newData.forEach((d, idx) => {
+    legend
+      .append("li")
+      .attr("style", `--color:${colors(idx)}`)
+      .attr("class", "legend-items")
+      .html(
+        `<span class="swatch"></span> ${d.label} <em class="legend-value">(${d.value})</em>`
+      );
+  });
 }
-  
+
 // Call this function on page load
 renderPieChart(projects);
 
-searchInput.addEventListener('input', (event) => {
+searchInput.addEventListener("input", (event) => {
   currentQuery = event.target.value;
   let filteredProjects = filterProjects();
   // re-render legends and pie chart when event triggers
-  renderProjects(filteredProjects, projectsContainer, 'h2');
+  renderProjects(filteredProjects, projectsContainer, "h2");
   renderPieChart(filteredProjects);
 });
 
-let svg = d3.select('svg');
-svg.selectAll('path').remove();
-    arcs.forEach((arc, i) => {
-      svg
-        .append('path')
-        .attr('d', arc)
-        .attr('fill', colors(i))
-        .on('click', () => {
-          // What should we do? (Keep scrolling to find out!)
-            selectedIndex = selectedIndex === i ? -1 : i;
-            svg
-                .selectAll('path')
-                .attr('class', (_, idx) => (
-                // TODO: filter idx to find correct pie slice and apply CSS from above
-                idx === selectedIndex ? 'selected' : null
-            ));
-            legend
-                .selectAll('li')
-                .attr('class', (_, idx) => (
-                  // TODO: filter idx to find correct legend and apply CSS from above
-                  idx === selectedIndex ? 'legend-items selected' : 'legend-items'
-            ));
-            if (selectedIndex === -1) {
-                renderProjects(projects, projectsContainer, 'h2');
-            } else {
-                // TODO: filter projects and project them onto webpage
-                // Hint: `.label` might be useful
-                //let selectedYear = data[selectedIndex].label;
-                //let filteredProjects = projects.filter(project => project.year === selectedYear);
-                let filteredProjects = filterProjects();
-                renderProjects(filteredProjects, projectsContainer, 'h2');
-            }
-        });
+let svg = d3.select("svg");
+svg.selectAll("path").remove();
+arcs.forEach((arc, i) => {
+  svg
+    .append("path")
+    .attr("d", arc)
+    .attr("fill", colors(i))
+    .on("click", () => {
+      // What should we do? (Keep scrolling to find out!)
+      selectedIndex = selectedIndex === i ? -1 : i;
+      svg.selectAll("path").attr("class", (_, idx) =>
+        // TODO: filter idx to find correct pie slice and apply CSS from above
+        idx === selectedIndex ? "selected" : null
+      );
+      legend.selectAll("li").attr("class", (_, idx) =>
+        // TODO: filter idx to find correct legend and apply CSS from above
+        idx === selectedIndex ? "legend-items selected" : "legend-items"
+      );
+      if (selectedIndex === -1) {
+        renderProjects(projects, projectsContainer, "h2");
+      } else {
+        // TODO: filter projects and project them onto webpage
+        // Hint: `.label` might be useful
+        //let selectedYear = data[selectedIndex].label;
+        //let filteredProjects = projects.filter(project => project.year === selectedYear);
+        let filteredProjects = filterProjects();
+        renderProjects(filteredProjects, projectsContainer, "h2");
+      }
     });
-
-
+});

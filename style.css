@@ -1,44 +1,44 @@
 :root {
-    --color-accent:oklch(0.74 0.14 174);
-    --border-color: oklch(50% 10% 200 / 40%);
-    color-scheme: light dark;
+  --color-accent: oklch(0.74 0.14 174);
+  --border-color: oklch(50% 10% 200 / 40%);
+  color-scheme: light dark;
 }
 
 body {
-    /* Set line height to 1.5 times the font size
+  /* Set line height to 1.5 times the font size
          and use the OS’s UI font as the website font
        */
-    font: 100%/1.5 system-ui;
-    max-width: 100ch;
-    margin-inline: auto;
-    padding: 1em;
-    accent-color: var(--color-accent);
-  }
+  font: 100%/1.5 system-ui;
+  max-width: 100ch;
+  margin-inline: auto;
+  padding: 1em;
+  accent-color: var(--color-accent);
+}
 
 nav {
-    display: flex;
-    margin-bottom: 2em;
-    border-bottom: 1px solid var(--border-color);
+  display: flex;
+  margin-bottom: 2em;
+  border-bottom: 1px solid var(--border-color);
 }
 
 nav a {
-    flex: 1;
-    text-decoration: none;
-    color: inherit;
-    text-align: center;
-    padding: 0.5em;
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  padding: 0.5em;
 }
 
-nav a:hover{
-    border-bottom: 0.4em solid var(--color-accent);
-    background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
-    padding-bottom: 0.1em;
+nav a:hover {
+  border-bottom: 0.4em solid var(--color-accent);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+  padding-bottom: 0.1em;
 }
 
 .current {
-    border-bottom: 0.4em solid oklch(80% 3% 200);
-    padding-bottom: 0.1em;
-    font-weight: bold
+  border-bottom: 0.4em solid oklch(80% 3% 200);
+  padding-bottom: 0.1em;
+  font-weight: bold;
 }
 
 /* Remove top-down layout
@@ -56,173 +56,179 @@ form input,textarea,button {
 } */
 
 form {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1em;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
 }
 
-
-form input,textarea,button,select {
-    font: inherit;
+form input,
+textarea,
+button,
+select {
+  font: inherit;
 }
 
 form label {
-    display: grid;
-    grid-template-columns: subgrid;
-    grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
 }
 
 form button {
-    grid-column: 1 / -1;
+  grid-column: 1 / -1;
 }
 
 .projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-    gap: 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1em;
 }
 
 .projects article {
-    display: grid;
-    grid-template-rows: subgrid;
-    grid-row: span 3;
-    gap: 1em;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  gap: 1em;
 }
 
-.projects h2{
-    margin: 0;
+.projects h2 {
+  margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    line-height: 1.1;
-    text-wrap: balance;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.1;
+  text-wrap: balance;
 }
 
 /* Resume CSS styling */
 .resume {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    gap: 2em;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 2em;
 
-    .PersonalInfo {
-        display: flex;
-        flex-direction: column;
-        border-right: 0.2em solid oklch(80% 3% 200);
-    }
+  .PersonalInfo {
+    display: flex;
+    flex-direction: column;
+    border-right: 0.2em solid oklch(80% 3% 200);
+  }
 
-    .CareerInfo {
-        display: flex;
-        flex-direction: column;
-    }
+  .CareerInfo {
+    display: flex;
+    flex-direction: column;
+  }
 
-    h2 {
-        padding-bottom: 0.45em;
-        text-decoration: underline;
-        text-decoration-color: var(--color-accent);
-        text-decoration-thickness: 0.2em;
-        text-underline-offset: 0.25em;
-    }
+  h2 {
+    padding-bottom: 0.45em;
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 0.2em;
+    text-underline-offset: 0.25em;
+  }
 }
 
 p {
-    text-wrap: balance;
+  text-wrap: balance;
 }
 
 .color-scheme {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 80%;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
 }
 
 #profile-img {
-    display: block;
-    width: 100%;
-    height: 100%;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 #profile-stats {
-    dl {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-    }
-    dt {
-        grid-row: 1;
-    }
-    dd {
-        grid-row: 2;
-        font-size: 2em;
-    }
+  dl {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  dt {
+    grid-row: 1;
+  }
+  dd {
+    grid-row: 2;
+    font-size: 2em;
+  }
 }
 
 .year {
-    font-family: Baskerville;
-    font-variant-numeric: oldstyle-nums;
-    font-size: 1.25em;
+  font-family: Baskerville;
+  font-variant-numeric: oldstyle-nums;
+  font-size: 1.25em;
 }
 
 #projects-plot {
-    max-width: 20em;
-    margin-block: 2em;
-  
-    overflow: visible;
+  max-width: 20em;
+  margin-block: 2em;
+
+  overflow: visible;
 }
 
 .legend {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
-    border: 0.1em solid var(--border-color); 
-    padding: 1em;
-    flex: 1;
-    gap: 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  border: 0.1em solid var(--border-color);
+  padding: 1em;
+  flex: 1;
+  gap: 1em;
 }
 
 .swatch {
-    width: 2em;
-    height: 2em;
-    background-color: var(--color);
-    border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  background-color: var(--color);
+  border-radius: 50%;
 }
 
 .legend-items {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
 }
 
 .legend-value {
-    color: gray;
+  color: gray;
 }
 
 .container {
-    display: flex;
-    align-items: center;
-    gap: 2em;
+  display: flex;
+  align-items: center;
+  gap: 2em;
 }
 
 .searchBar {
-    display: block;
-    width: 100%;
-    margin-bottom: 1em;
-    font-size: 1.75em;
-    padding: 0.5em;
+  display: block;
+  width: 100%;
+  margin-bottom: 1em;
+  font-size: 1.75em;
+  padding: 0.5em;
 }
 
 &:has(path:hover) {
-    path:not(:hover) {
-      opacity: 0.5;
-    }
-
+  path:not(:hover) {
+    opacity: 0.5;
+  }
 }
 path {
-    transition: 300ms;
-    cursor: pointer;
+  transition: 300ms;
+  cursor: pointer;
 }
 
 .selected {
-    --color: oklch(60% 45% 0) !important;
-  
-    &:is(path) {
-      fill: var(--color);
-    }
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
 }
