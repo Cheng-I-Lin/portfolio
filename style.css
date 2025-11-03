@@ -148,10 +148,10 @@ p {
   height: 100%;
 }
 
-#profile-stats {
+.stats {
   dl {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto, 1fr);
   }
   dt {
     grid-row: 1;
@@ -159,6 +159,7 @@ p {
   dd {
     grid-row: 2;
     font-size: 2em;
+    margin: 0;
   }
 }
 
