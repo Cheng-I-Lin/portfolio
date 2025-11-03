@@ -233,3 +233,7 @@ path {
     fill: var(--color);
   }
 }
+
+.gridlines {
+  opacity: 0.25;
+}
