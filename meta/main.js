@@ -140,22 +140,34 @@ function renderScatterPlot(data, commits) {
     .call(yAxis);
 
   const dots = svg.append("g").attr("class", "dots");
+  const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
+  const rScale = d3
+    .scaleSqrt() // Change only this line
+    .domain([minLines, maxLines])
+    .range([5, 25]);
 
+  // Sort commits by total lines in descending order
+  const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
+
+  // Use sortedCommits in your selection instead of commits
   dots
     .selectAll("circle")
-    .data(commits)
+    .data(sortedCommits)
     .join("circle")
     .attr("cx", (d) => xScale(d.datetime))
     .attr("cy", (d) => yScale(d.hourFrac))
-    .attr("r", 5)
+    .attr("r", (d) => rScale(d.totalLines))
+    .style("fill-opacity", 0.7)
     .attr("fill", "steelblue")
     .on("mouseenter", (event, commit) => {
+      d3.select(event.currentTarget).style("fill-opacity", 1);
       renderTooltipContent(commit);
       updateTooltipVisibility(true);
       updateTooltipPosition(event);
     })
     .on("mouseleave", () => {
       // TODO: Hide the tooltip
+      d3.select(event.currentTarget).style("fill-opacity", 0.7);
       updateTooltipVisibility(false);
     });
 }
