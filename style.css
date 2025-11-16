@@ -274,6 +274,9 @@ circle {
   transition: 200ms;
   transform-origin: center;
   transform-box: fill-box;
+  @starting-style {
+    r: 0;
+  }
 }
 
 circle:hover {
@@ -296,4 +299,24 @@ circle:hover {
 
 circle.selected {
   fill: #ff6b6b;
+}
+
+#commit-slider{
+  accent-color: initial;
+  
+  label{
+    display: flex;
+    flex: 1;
+    align-items: baseline;
+  }
+
+  input{
+    flex: 1;
+  }
+
+  time{
+    display: block;
+    margin-left: auto;
+    text-align: right;
+  }
 }
