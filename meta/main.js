@@ -54,7 +54,9 @@ function renderCommitInfo(data, commits) {
 
   // Add total files
   dl.append("dt").html("FILES");
-  dl.append("dd").attr("class", "stat-files").text(d3.group(data, (d) => d.file).size);
+  dl.append("dd")
+    .attr("class", "stat-files")
+    .text(d3.group(data, (d) => d.file).size);
 
   // Add total LOC
   dl.append("dt").html('TOTAL <abbr title="Lines of code">LOC</abbr>');
@@ -62,7 +64,9 @@ function renderCommitInfo(data, commits) {
 
   // Add max depth
   dl.append("dt").html("MAX DEPTH");
-  dl.append("dd").attr("class", "stat-depth").text(d3.max(data, (d) => d.depth));
+  dl.append("dd")
+    .attr("class", "stat-depth")
+    .text(d3.max(data, (d) => d.depth));
 
   // Add max line
   const fileLengths = d3.rollups(
@@ -71,11 +75,15 @@ function renderCommitInfo(data, commits) {
     (d) => d.file
   );
   dl.append("dt").html("AVG LINES");
-  dl.append("dd").attr("class", "stat-avg-lines").text(d3.mean(fileLengths, (d) => d[1]));
+  dl.append("dd")
+    .attr("class", "stat-avg-lines")
+    .text(Math.round(d3.mean(fileLengths, (d) => d[1])));
 
   // Add longest line
   dl.append("dt").html("MAX LINES");
-  dl.append("dd").attr("class", "stat-max-lines").text(d3.max(data, (d) => d.line));
+  dl.append("dd")
+    .attr("class", "stat-max-lines")
+    .text(d3.max(data, (d) => d.line));
 }
 
 function updateCommitInfo(data, commits) {
@@ -97,7 +105,9 @@ function updateCommitInfo(data, commits) {
     (v) => d3.max(v, (v) => v.line),
     (d) => d.file
   );
-  d3.select(".stat-avg-lines").text(d3.mean(fileLengths, (d) => d[1]));
+  d3.select(".stat-avg-lines").text(
+    Math.round(d3.mean(fileLengths, (d) => d[1]))
+  );
 
   // Add longest line
   d3.select(".stat-max-lines").text(d3.max(data, (d) => d.line));
@@ -193,7 +203,7 @@ function renderScatterPlot(data, commits) {
       updateTooltipVisibility(true);
       updateTooltipPosition(event);
     })
-    .on("mouseleave", () => {
+    .on("mouseleave", (event) => {
       // TODO: Hide the tooltip
       d3.select(event.currentTarget).style("fill-opacity", 0.7);
       updateTooltipVisibility(false);
@@ -323,19 +333,62 @@ const selectedTime = document.getElementById("commit-time");
 
 // Will get updated as user changes slider
 let filteredCommits = commits;
+let filteredData = data;
 
-timeSlider.addEventListener("input", (event) => {
-  commitProgress = event.target.value;
+function onTimeSliderChange() {
+  commitProgress = timeSlider.value;
   commitMaxTime = timeScale.invert(commitProgress);
   selectedTime.innerHTML = commitMaxTime.toLocaleString({
     dateStyle: "long",
     timeStyle: "short",
   });
-
   filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
-  updateScatterPlot(data, filteredCommits);
-  updateCommitInfo(data, filteredCommits);
-});
+  filteredData = data.filter((d) => d.datetime <= commitMaxTime);
+
+  updateScatterPlot(filteredData, filteredCommits);
+  updateCommitInfo(filteredData, filteredCommits);
+  updateFileDisplay(filteredCommits);
+}
+
+onTimeSliderChange();
+timeSlider.addEventListener("input", onTimeSliderChange);
+
+function updateFileDisplay(filteredCommits) {
+  let lines = filteredCommits.flatMap((d) => d.lines);
+  let colors = d3.scaleOrdinal(d3.schemeTableau10);
+  let files = d3
+    .groups(lines, (d) => d.file)
+    .map(([name, lines]) => {
+      return { name, lines };
+    })
+    .sort((a, b) => b.lines.length - a.lines.length);
+
+  let filesContainer = d3
+    .select("#files")
+    .selectAll("div")
+    .data(files, (d) => d.name)
+    .join(
+      // This code only runs when the div is initially rendered
+      (enter) =>
+        enter.append("div").call((div) => {
+          div.append("dt").html(`<code></code> <small></small>`);
+          div.append("dd");
+        })
+    );
+
+  // append one div for each line
+  filesContainer
+    .select("dd")
+    .selectAll("div")
+    .data((d) => d.lines)
+    .join("div")
+    .attr("class", "loc")
+    .attr('style', (d) => `--color: ${colors(d.type)}`);
+
+  // This code updates the div info
+  filesContainer.select("dt > code").text((d) => d.name);
+  filesContainer.select("small").text((d) => `${d.lines.length} lines`);
+}
 
 function updateScatterPlot(data, commits) {
   const width = 1000;
@@ -387,3 +440,5 @@ function updateScatterPlot(data, commits) {
       updateTooltipVisibility(false);
     });
 }
+
+//console.log(commits);
