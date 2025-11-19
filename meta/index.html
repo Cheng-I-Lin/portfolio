@@ -17,36 +17,30 @@
       </label>
       <time id="commit-time"></time>
     </div>
-    <dl id="files">
-      <!-- we want the following structure for each file:
-        <div>
-          <dt>
-            <code>{file.name}</code>
-          </dt>
-          <dd>{file.lines.length} lines</dd>
-        </div>
-        -->
-    </dl>
     <div class="stats" id="stats"></div>
 
     <h2>Commits by Time of Day</h2>
-    <div id="chart"></div>
+    <div id="scrolly-1">
+      <div id="scatter-story">some filler text here</div>
+      <div id="scatter-plot">
+        <div id="chart"></div>
+        <dl id="commit-tooltip" class="info tooltip" hidden>
+          <dt>Commit</dt>
+          <dd>
+            <a href="" id="commit-link" target="_blank"></a>
+          </dd>
 
-    <dl id="commit-tooltip" class="info tooltip" hidden>
-      <dt>Commit</dt>
-      <dd>
-        <a href="" id="commit-link" target="_blank"></a>
-      </dd>
+          <dt>Date</dt>
+          <dd id="commit-date"></dd>
+        </dl>
+      </div>
+    </div>
 
-      <dt>Date</dt>
-      <dd id="commit-date"></dd>
-
-      <!-- Add: Time, author, lines edited -->
-    </dl>
     <p id="selection-count">No commits selected</p>
     <div class="stats">
       <dl id="language-breakdown"></dl>
     </div>
+    <dl id="files"></dl>
 
     <script type="module" src="../global.js"></script>
     <script src="main.js" type="module" defer></script>
