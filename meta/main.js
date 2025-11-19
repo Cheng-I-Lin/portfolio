@@ -320,6 +320,7 @@ let commits = processCommits(data);
 renderCommitInfo(data, commits);
 renderScatterPlot(data, commits);
 
+/*
 let commitProgress = 100;
 let timeScale = d3
   .scaleTime()
@@ -332,10 +333,6 @@ let commitMaxTime = timeScale.invert(commitProgress);
 
 const timeSlider = document.getElementById("commit-progress");
 const selectedTime = document.getElementById("commit-time");
-
-// Will get updated as user changes slider
-let filteredCommits = commits;
-let filteredData = data;
 
 function onTimeSliderChange() {
   commitProgress = timeSlider.value;
@@ -353,7 +350,11 @@ function onTimeSliderChange() {
 }
 
 onTimeSliderChange();
-timeSlider.addEventListener("input", onTimeSliderChange);
+timeSlider.addEventListener("input", onTimeSliderChange);*/
+
+// Will get updated as user changes slider
+let filteredCommits = commits;
+let filteredData = data;
 
 function updateFileDisplay(filteredCommits) {
   let lines = filteredCommits.flatMap((d) => d.lines);
